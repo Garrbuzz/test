@@ -27,10 +27,10 @@ if ($type == 'login'){
 			$loginRes = false;
 		}
 	}
-	$result=json_encode($loginRes);
+	$result=json_encode($_SESSION['user']);
 	echo $result;
 } elseif($type == 'session') {
-	$res1 = isset($_SESSION);
+	$res1 = $_SESSION['user'];
 	$result=json_encode($res1);
 	echo $result;
 }

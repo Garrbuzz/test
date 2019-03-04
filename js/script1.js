@@ -1,24 +1,35 @@
 window.onload = function () {
-	var div = document.querySelector('.item');
-	var timer = new Timer(60, div);
-	alert();
-	setInterval(t, 1000);
-function t(){
-		timer.tick();
-	}
-function Timer(time, elem){
+	
+		let type = 'session';
+		
 
-	this.time = time;
-	this.elem = elem;
+		
+	 		fetch('./php/login.php', {method:"POST", headers: { "Content-type": "application/x-www-form-urlencoded; charset=UTF-8" }, body: "type=" + type })  
+		  .then(  
+		    function(response) {  
+		      if (response.status !== 200) {  
+		        console.log('Looks like there was a problem. Status Code: ' +  
+		          response.status);  
+		        return;  
+		      }
 
-	this.tick = function(){
+		      // Examine the text in the response  
+		      response.json().then(function(data) {  
+		       
+		        	console.log(data);
+		        	// document.location.href = 'cabinet.html'; 
 
-		this.time--;
-		this.elem.innerHTML = this.time;
-	}
+		       
+		      });  
+		    }  
+		  )  
+		  .catch(function(err) {  
+		    console.log('Fetch Error :-S', err);  
+		  });
+		
+	
 
-}
-
+	
 
 
 }	
